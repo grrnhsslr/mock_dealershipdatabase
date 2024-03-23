@@ -49,13 +49,6 @@ CREATE TABLE IF NOT EXISTS mechanics (
     last_name VARCHAR(50)
 );
 
--- Cars that have been serviced
-CREATE TABLE IF NOT EXISTS mechanic_cars (
-    mechanic_id INTEGER,
-    car_id INTEGER,
-    FOREIGN KEY (mechanic_id) REFERENCES mechanics(mechanic_id),
-    FOREIGN KEY (car_id) REFERENCES cars(car_id)
-);
 
 
 INSERT INTO employees (first_name, last_name) VALUES ('John', 'Doe');
@@ -76,15 +69,11 @@ INSERT INTO service_tickets (customer_id, car_id) VALUES (2, 2);
 INSERT INTO mechanics (first_name, last_name) VALUES ('Mike', 'Johnson');
 INSERT INTO mechanics (first_name, last_name) VALUES ('Sarah', 'Smith');
 
-INSERT INTO mechanic_cars (mechanic_id, car_id) VALUES (1, 1);
-INSERT INTO mechanic_cars (mechanic_id, car_id) VALUES (2, 2);
 
 
 SELECT * FROM cars;
 SELECT * FROM customers;
 SELECT * FROM employees;
-SELECT * FROM mechanic_cars;
-SELECT * FROM mechanics;
 SELECT * FROM sales;
 SELECT * FROM service_tickets;
 

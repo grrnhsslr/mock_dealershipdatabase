@@ -7,12 +7,18 @@ CREATE TABLE IF NOT EXISTS employees (
     last_name VARCHAR(50)
 );
 
+ALTER TABLE employees
+ADD COLUMN "sales" bool,
+ADD COLUMN "service" bool;
+
 -- Customers table
 CREATE TABLE IF NOT EXISTS customers (
     customer_id SERIAL PRIMARY KEY,
     first_name VARCHAR(50),
     last_name VARCHAR(50)
 );
+
+
 
 -- Cars table
 CREATE TABLE IF NOT EXISTS cars (
@@ -23,6 +29,10 @@ CREATE TABLE IF NOT EXISTS cars (
     sold BOOLEAN DEFAULT FALSE,
     serviced BOOLEAN DEFAULT FALSE
 );
+
+ALTER TABLE customers
+ADD COLUMN "car_id" integer,
+ADD FOREIGN KEY (car_id) REFERENCES cars(car_id);
 
 -- Sales table
 CREATE TABLE IF NOT EXISTS sales (
@@ -42,14 +52,6 @@ CREATE TABLE IF NOT EXISTS service_tickets (
     FOREIGN KEY (car_id) REFERENCES cars(car_id)
 );
 
--- Mechanics table
-CREATE TABLE IF NOT EXISTS mechanics (
-    mechanic_id SERIAL PRIMARY KEY,
-    first_name VARCHAR(50),
-    last_name VARCHAR(50)
-);
-
-
 
 INSERT INTO employees (first_name, last_name) VALUES ('John', 'Doe');
 INSERT INTO employees (first_name, last_name) VALUES ('Jane', 'Smith');
@@ -66,15 +68,9 @@ INSERT INTO sales (employee_id, car_id) VALUES (2, 2);
 INSERT INTO service_tickets (customer_id, car_id) VALUES (1, 1);
 INSERT INTO service_tickets (customer_id, car_id) VALUES (2, 2);
 
-INSERT INTO mechanics (first_name, last_name) VALUES ('Mike', 'Johnson');
-INSERT INTO mechanics (first_name, last_name) VALUES ('Sarah', 'Smith');
-
-
 
 SELECT * FROM cars;
 SELECT * FROM customers;
 SELECT * FROM employees;
 SELECT * FROM sales;
 SELECT * FROM service_tickets;
-
-

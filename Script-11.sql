@@ -100,7 +100,6 @@ SELECT * FROM cars
 ORDER BY car_id;
 SELECT * FROM customers;
 SELECT * FROM employees;
-SELECT * FROM mechanics;
 SELECT * FROM sales
 ORDER BY car_id;
 SELECT * FROM service_tickets
